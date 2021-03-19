@@ -2,7 +2,7 @@
 
 You can resolve the following exercise in JavaScript or TypeScript.
 
-The code should be written as if it was going to be pushed to a professional codebase, not as a draft.
+Please approach this test as if the code was going to be pushed to a professional codebase, not as a draft.
 
 Try and solve it with reasonable algorithmic complexity. This means that even the harder tests should run within a couple of seconds or even less.
 
