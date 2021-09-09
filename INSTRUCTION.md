@@ -49,14 +49,6 @@ Earnings of the ride : 2 dirhams.
 
 ### Output
 An integer representing the number of dirhams earned at the end of the day on the roller coaster (after C roller coaster rides)
-Constraints
-```
-Pi ≤ L
-1 ≤ L ≤ 10^7
-1 ≤ C ≤ 10^7
-1 ≤ N ≤ 1000
-1 ≤ Pi ≤ 10^6
-```
 
 ### Examples
 
