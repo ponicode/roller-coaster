@@ -16,7 +16,7 @@ function executesimulation(rollercoaster: RollerCoaster) {
     // console.log(rollercoaster)
     var old_benifits: { [begin: number]: Earning } = {}
     while (ride < rollercoaster.numberOfRidesPerDay) {
-        // console.log(begin, ' to', totalbenifits)
+        console.log(begin, ' to', totalbenifits)
         numberofplayers = 0
         if (old_benifits[begin]) {
 
@@ -99,11 +99,11 @@ async function parsesample(path: string) {
 // parsesample("./samples/1_simple_case.txt")
 // parsesample("./samples/2_1000_groups_of_few_people.txt")
 // parsesample("./samples/3_the_same_groups_go_on_the_ride_several_times_during_the_day.txt")
-// parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt") // error 
+parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt") // error 
 // parsesample("./samples/5_high_earnings_during_the_day.txt")
 // parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
-parsesample("./samples/7.hard.txt")
-// parsesample("./samples/8.harder.txt") // DIDNT work
+// parsesample("./samples/7.hard.txt") // error 
+// parsesample("./samples/8.harder.txt") // DIDN'T work
 // try {
 //     let x = yield parsesample("./samples/1_simple_case.txt")
 //     executesimulation(x)
