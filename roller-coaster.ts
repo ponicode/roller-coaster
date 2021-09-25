@@ -12,16 +12,13 @@ function executesimulation(rollercoaster: RollerCoaster) {
     let ride = 0
     let begin = 0, end;
     let totalbenifits = 0
-    let numberofplayers
-    // console.log(rollercoaster)
+    let numberofplayers // represents the number of players in one ride 
+
     var old_benifits: { [begin: number]: Earning } = {}
     while (ride < rollercoaster.numberOfRidesPerDay) {
-        // console.log(begin, ' to', totalbenifits)
         numberofplayers = 0
         let oneque = false // beucase i don't have time to  think about a more proper way 
         if (old_benifits[begin]) {
-
-            // console.log("begin : " + begin + " benifits " + old_benifits[begin].numberofplayers)
             begin = (begin + old_benifits[begin].size) % rollercoaster.numberOfGroups
             totalbenifits += old_benifits[begin].numberofplayers
 
@@ -35,8 +32,6 @@ function executesimulation(rollercoaster: RollerCoaster) {
                     oneque = true
                     break
                 }
-                // console.log("bgin : " + begin)
-                // console.log('numberofplayers ', numberofplayers)
             }
             if (!oneque) {
                 end = (end - 1 + rollercoaster.numberOfGroups) % rollercoaster.numberOfGroups // undo the last changes of the loop 
@@ -50,19 +45,12 @@ function executesimulation(rollercoaster: RollerCoaster) {
             }
             begin = end
         }
-        // if (begin === 0) {
-        //     console.log("we came back ")
-        //     let remainingoops = rollercoaster.numberOfRidesPerDay / ride - 1
-        //     totalbenifits *= remainingoops
-        // }
-        // console.log("totalbenifits : " + totalbenifits)
-        // first optimization when we go into a loop - low chance , easy to implement 
+
         ride++
-        // get number who will get into the ride 
-        // shift the indexes of begining and end 
-        // 
+
     }
     console.log(totalbenifits)
+    return totalbenifits
 }
 
 
@@ -75,18 +63,13 @@ async function parsesample(path: string) {
     };
     const readInterface = readline.createInterface({
         input: fs.createReadStream(path),
-        // output: process.stdout,
         console: false
     });
-    // for (const line of readInterface) {
-    //     console.log(line);
-    // }
     var firstline = true; // use it to get only the first line 
     await readInterface.on('line', function (line: string) {
         if (firstline) {
             firstline = false;
             [myrollerCoaster.limitePersonsPerRide, myrollerCoaster.numberOfRidesPerDay, myrollerCoaster.numberOfGroups] = line.split(" ").map(function (e: string) { return parseInt(e) });
-            // myrollerCoaster = { , personsPerGroup: [] }
         } else {
             myrollerCoaster.personsPerGroup.push(Number(line))
         }
@@ -94,14 +77,16 @@ async function parsesample(path: string) {
         // return myrollerCoaster;
     }).on('close', () => {
         console.log("begin calculation")
-        executesimulation(myrollerCoaster);
+        return executesimulation(myrollerCoaster);
     });
     // TODO  the this and remove calling the execution from the parse sample function 
 
 
-    return myrollerCoaster;
+
 
 }
+
+// manual testing since the automatic one failed 
 
 parsesample("./samples/1_simple_case.txt")
 parsesample("./samples/2_1000_groups_of_few_people.txt")
@@ -111,10 +96,3 @@ parsesample("./samples/5_high_earnings_during_the_day.txt")
 parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
 // parsesample("./samples/7.hard.txt") // error
 // parsesample("./samples/8.harder.txt") // DIDN'T work
-// try {
-//     let x = yield parsesample("./samples/1_simple_case.txt")
-//     executesimulation(x)
-// }
-// catch (err) {
-//     console.log(err)
-// }
