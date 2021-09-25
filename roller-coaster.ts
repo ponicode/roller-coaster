@@ -21,7 +21,13 @@ function executesimulation(rollercoaster: RollerCoaster) {
         begin = (begin - 1 + rollercoaster.numberOfGroups) % rollercoaster.numberOfGroups // undo the last changes of the loop 
         numberofplayers -= rollercoaster.personsPerGroup[begin];
         totalbenifits += numberofplayers
+        // if (begin === 0) {
+        //     console.log("we came back ")
+        //     let remainingoops = rollercoaster.numberOfRidesPerDay / ride - 1
+        //     totalbenifits *= remainingoops
+        // }
         // console.log("totalbenifits : " + totalbenifits)
+        // first optimization when we go into a loop - low chance , easy to implement 
         ride++
         // get number who will get into the ride 
         // shift the indexes of begining and end 
