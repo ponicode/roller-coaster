@@ -16,8 +16,9 @@ function executesimulation(rollercoaster: RollerCoaster) {
     // console.log(rollercoaster)
     var old_benifits: { [begin: number]: Earning } = {}
     while (ride < rollercoaster.numberOfRidesPerDay) {
-        console.log(begin, ' to', totalbenifits)
+        // console.log(begin, ' to', totalbenifits)
         numberofplayers = 0
+        let oneque = false // beucase i don't have time to  think about a more proper way 
         if (old_benifits[begin]) {
 
             // console.log("begin : " + begin + " benifits " + old_benifits[begin].numberofplayers)
@@ -30,11 +31,17 @@ function executesimulation(rollercoaster: RollerCoaster) {
             while (numberofplayers <= rollercoaster.limitePersonsPerRide) {
                 numberofplayers = numberofplayers + rollercoaster.personsPerGroup[end]
                 end = (end + 1) % rollercoaster.numberOfGroups
+                if (end == begin) {
+                    oneque = true
+                    break
+                }
                 // console.log("bgin : " + begin)
                 // console.log('numberofplayers ', numberofplayers)
             }
-            end = (end - 1 + rollercoaster.numberOfGroups) % rollercoaster.numberOfGroups // undo the last changes of the loop 
-            numberofplayers -= rollercoaster.personsPerGroup[end];
+            if (!oneque) {
+                end = (end - 1 + rollercoaster.numberOfGroups) % rollercoaster.numberOfGroups // undo the last changes of the loop 
+                numberofplayers -= rollercoaster.personsPerGroup[end];
+            }
             totalbenifits += numberofplayers
             /// adding the result to thje memory 
             old_benifits[begin] = {
@@ -96,13 +103,13 @@ async function parsesample(path: string) {
 
 }
 
-// parsesample("./samples/1_simple_case.txt")
-// parsesample("./samples/2_1000_groups_of_few_people.txt")
-// parsesample("./samples/3_the_same_groups_go_on_the_ride_several_times_during_the_day.txt")
-parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt") // error 
-// parsesample("./samples/5_high_earnings_during_the_day.txt")
-// parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
-// parsesample("./samples/7.hard.txt") // error 
+parsesample("./samples/1_simple_case.txt")
+parsesample("./samples/2_1000_groups_of_few_people.txt")
+parsesample("./samples/3_the_same_groups_go_on_the_ride_several_times_during_the_day.txt")
+parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt")
+parsesample("./samples/5_high_earnings_during_the_day.txt")
+parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
+// parsesample("./samples/7.hard.txt") // error
 // parsesample("./samples/8.harder.txt") // DIDN'T work
 // try {
 //     let x = yield parsesample("./samples/1_simple_case.txt")
