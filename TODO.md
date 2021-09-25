@@ -1,5 +1,5 @@
 [x] Fix the bug for 4 
-[ ] Fix the bug for cases6 and 7 
+[x] Fix the bug for cases6 and 7 
 [ ] Add another level of dynamic programming for 8 
 [ ] Remake the tests 
 [x] Clean the code 

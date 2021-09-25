@@ -5,7 +5,7 @@ const readline = require('readline');
 
 interface Earning {
     numberofplayers: number
-    size: number
+    end: number
 }
 
 function executesimulation(rollercoaster: RollerCoaster) {
@@ -18,10 +18,10 @@ function executesimulation(rollercoaster: RollerCoaster) {
     while (ride < rollercoaster.numberOfRidesPerDay) {
         numberofplayers = 0
         let oneque = false // beucase i don't have time to  think about a more proper way 
-        if (old_benifits[begin]) {
-            begin = (begin + old_benifits[begin].size) % rollercoaster.numberOfGroups
-            totalbenifits += old_benifits[begin].numberofplayers
+        if (old_benifits[begin] !== undefined && ride < rollercoaster.numberOfRidesPerDay - 2) {
 
+            totalbenifits += old_benifits[begin].numberofplayers
+            begin = old_benifits[begin].end
         }
         else {
             end = begin
@@ -41,7 +41,7 @@ function executesimulation(rollercoaster: RollerCoaster) {
             /// adding the result to thje memory 
             old_benifits[begin] = {
                 numberofplayers: numberofplayers,
-                size: (end - begin + rollercoaster.numberOfGroups) % rollercoaster.numberOfGroups
+                end: end
             }
             begin = end
         }
@@ -77,6 +77,7 @@ async function parsesample(path: string) {
         // return myrollerCoaster;
     }).on('close', () => {
         console.log("begin calculation")
+
         return executesimulation(myrollerCoaster);
     });
     // TODO  the this and remove calling the execution from the parse sample function 
@@ -88,11 +89,11 @@ async function parsesample(path: string) {
 
 // manual testing since the automatic one failed 
 
-parsesample("./samples/1_simple_case.txt")
-parsesample("./samples/2_1000_groups_of_few_people.txt")
-parsesample("./samples/3_the_same_groups_go_on_the_ride_several_times_during_the_day.txt")
-parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt")
-parsesample("./samples/5_high_earnings_during_the_day.txt")
-parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
+// parsesample("./samples/1_simple_case.txt")
+// parsesample("./samples/2_1000_groups_of_few_people.txt")
+// parsesample("./samples/3_the_same_groups_go_on_the_ride_several_times_during_the_day.txt")
+// parsesample("./samples/4_all_the_people_get_on_the_roller_coaster_at_least_once.txt")
+// parsesample("./samples/5_high_earnings_during_the_day.txt")
+// parsesample("./samples/6_works_with_a_large_dataset.txt") // error 
 // parsesample("./samples/7.hard.txt") // error
-// parsesample("./samples/8.harder.txt") // DIDN'T work
+parsesample("./samples/8.harder.txt") // DIDN'T work
