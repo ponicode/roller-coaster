@@ -1,20 +1,17 @@
 # Ponicode Technical Test - The Roller Coaster
 
 You can resolve the following exercise in JavaScript or TypeScript.
-
 Please approach this test as if the code was going to be pushed to a professional codebase, not as a draft.
-
 Try and solve it with reasonable algorithmic complexity. This means that even the harder tests should run within a **couple of seconds or even less**.
 
 :warning: Do not fork this repository and do not submit any Pull Requests :warning:
-
 When you're done, please create your public repository on GitHub and communicate the URL by email.
 
 ## Agenda
 
 The following test has 2 parts:
 
-* at home, design and implement a solution for the follwing problem (~3h30)
+* at home, design and implement a solution for the follwing problem (~3h30). The main constraint is time. You have 3h30 max to complete and push the result. (_We will look at the commits to check the time you spent on your dev steps. Don't forget to make a first commit as soon as you start working_ ).
 * present the result to one or two developers (~30min)
 
 ## The Goal
