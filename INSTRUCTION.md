@@ -9,7 +9,7 @@ When you're done, please create your public repository on GitHub and communicate
 
 ## Expectations
 
-You are given 2 hours to design and implement a solution to the following problem in order to run as many test samples as possible (_We will look at the commits to check the time you spent on your dev steps. Don't forget to make a first commit as soon as you start working_ ).
+You are given 45 minutes to design and implement a solution to the following problem in order to run as many test samples as possible (_We will look at the commits to check the time you spent on your dev steps. Don't forget to make a first commit as soon as you start working_ ).
 In interview you will be asked to explain your choices of implementation.
 
 You will be evaluated on your program performance as well as on your good pratices of code.
